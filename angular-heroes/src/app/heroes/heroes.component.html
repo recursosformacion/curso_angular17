@@ -1,0 +1,12 @@
+<h2>Mis heroes</h2>
+<ul class="list-group">
+    <li class="list-group-item row" *ngFor="let hero of heroes">
+        <a 
+                class="col-md-12"
+            routerLink='/detalle/{{hero.id}}'>
+            <span class="float-start w-5 p-3">{{hero.id}}</span>
+            <span class="float-start w-10 p-3">{{hero.name}}</span>
+        </a>
+    </li>
+</ul>
+

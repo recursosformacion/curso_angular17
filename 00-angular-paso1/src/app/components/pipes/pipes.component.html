@@ -1,0 +1,36 @@
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Pipe</th>
+        <th scope="col">Resultado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">1</th>
+        <td>{{cadena}}</td>
+        <td>uppercase</td>
+        <td>{{cadena | uppercase}}</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>{{cadena}}</td>
+        <td>lowercase</td>
+        <td>{{ cadena | lowercase }}</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td>{{cadena}}</td>
+        <td>titlecase</td>
+        <td>{{ cadena | titlecase }}</td>
+      </tr>
+      <tr>
+        <th scope="row">4</th>
+        <td>{{numerico}}</td>
+        <td>currency</td>
+        <td>{{ numerico | currency:'€' }}</td>
+      </tr>
+    </tbody>
+  </table>

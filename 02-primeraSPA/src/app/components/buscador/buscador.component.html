@@ -1,0 +1,8 @@
+<h1> Buscando {{ termino}} </h1>
+
+<div class="card-columns">
+
+    <app-heroe-tarjeta [heroe]="heroe" [indice]="heroe.idx" *ngFor="let heroe of heroes; let i = index">
+    </app-heroe-tarjeta>
+
+</div>

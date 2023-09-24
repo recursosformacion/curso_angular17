@@ -1,0 +1,34 @@
+setTimeout(() => {
+    callApi('url', status => {
+        saveInDb(status, result => {
+            console.log(`Successfully completed - ${result}`);
+          },
+          error => {
+            console.log('something went wrong');
+          }
+        );    // fin llamada saveInDb(status,result,error)
+      },
+      error => {
+        console.log(`Something went wrong - ${error}`);
+      }
+    );   //fin llamada callApi(string,status,error)
+  }, 5000);
+
+  //***************************************************** */
+  //Alternativa
+  //***************************************************** */
+  const aPromise = new Promise((resolve, reject) => {
+    setTimeout(resolve, 5000);
+  });
+  
+  aPromise
+    .then(() => callApi('url'))
+    .then(status => saveInDb(status))
+    .then(result => {
+      console.log(`Successfully completed - ${result}`);
+    })
+    .catch(error => {
+      console.log(`Something went wrong - ${error}`);
+    })
+
+

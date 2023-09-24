@@ -1,0 +1,28 @@
+
+let subirImagen = function(estadoImagen:string) :Promise<{estadoImagen:string}> {
+    return new Promise((resolve) => {
+        console.log(`Estado: ${estadoImagen}`);
+        setTimeout(() => {
+          resolve({ estadoImagen: estadoImagen });
+        }, 1000);
+      });
+    }
+
+    let subir;
+    let comprimir;
+    let transferir;
+console.log("Empieza..::");
+    subirImagen('subiendo.....')
+    .then((res)=> {
+        subir=res;
+        return  subirImagen('comprimiendo.....')
+    })
+    .then((res)=> {
+        comprimir=res;
+        return  subirImagen('Transfiriendo.....')
+    })
+    .then((res)=> {
+        transferir=res;
+        return  subirImagen('Proceso finalizado.....')
+    })
+    console.log("Termina.....");

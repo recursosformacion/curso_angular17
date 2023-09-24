@@ -1,0 +1,103 @@
+<h4>Formularios <small>template</small></h4>
+<a [routerLink]="[ '/login' ]">Ir a Login</a>
+<hr>
+<form (ngSubmit)="guardar(formulario)" 
+        #formulario="ngForm" novalidate="">
+
+    <div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Nombre</label>
+            <div class="col-8">
+                <input class="form-control" type="text" name="nombre"
+                  [(ngModel)]="usuario.nombre" placeholder="Nombre"
+                   #nombre="ngModel">
+                <div *ngIf="nombre.errors?.required">
+                    Este campo es obligatorio
+                </div>
+                <div *ngIf="nombre.errors?.minlength">
+                    Por lo menos, {{ nombre.errors.minlength.requiredLength }} caracteres
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-2 col-form-label">Apellido</label>
+            <div class="col-8">
+                <input class="form-control" type="text" placeholder="Apellido" name="apellido" [(ngModel)]="usuario.apellidos">
+            </div>
+        </div>
+
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Correo</label>
+        <div class="col-md-8">
+            <input class="form-control" type="email" name="email" [(ngModel)]="usuario.email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Correo electrónico">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Pais</label>
+        <div class="col-md-8">
+            <select [(ngModel)]="usuario.pais" class="form-control" name="pais">
+                <option value="">Seleccione un pais</option>
+                <option *ngFor="let pais of paises" [value]=" pais.codigo ">{{ pais.nombre }}</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Sexo</label>
+        <div class="col-md-8">
+            <div class="custom-control custom-radio ">
+                <input [(ngModel)]="usuario.sexo" type="radio" name="sexo" value="Hombre" class="custom-control-input" />
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Hombre</span>
+            </div>
+
+            <div class="custom-control custom-radio ">
+                <input [(ngModel)]="usuario.sexo" type="radio" name="sexo" value="Mujer" class="custom-control-input">
+                <span class="custom-control-indicator"></span>
+                <span class="custom-control-description">Mujer</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Contraseña</label>
+        <div class="col-md-8">
+            <input class="form-control" type="pasword" name="pass" [(ngModel)]="usuario.pass"  placeholder="Contraseña">
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-2 col-form-label">Repita contraseña</label>
+        <div class="col-md-8">
+            <input class="form-control" type="password" name="repass"  placeholder="Contraseña">
+        </div>
+    </div>
+
+
+    <div class="form-group row">
+        <label class="col-2 col-form-label">&nbsp;</label>
+        <div class="input-group col-md-8">
+            <button type="submit" class="btn btn-outline-primary" [disabled]="formulario.invalid">
+                Guardar
+            </button>
+        </div>
+    </div>
+
+</form>
+<h2>Todo correcto = {{formulario.valid}}</h2>
+
+<h2>Status = {{ formulario.status}}</h2>
+
+<h2>Pending = {{ formulario.pending}} </h2>
+<h2>Pristine = {{ formulario.pristine}} </h2>
+<h2>Dirty = {{ formulario.dirty}} </h2>
+<pre>
+    {{usuario | json}}
+</pre>
+
+<pre>
+    {{formulario.value|json}}
+</pre>
